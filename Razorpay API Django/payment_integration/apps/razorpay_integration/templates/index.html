@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6 col-lg-5 p-4 shadow-lg rounded bg-white" style="backdrop-filter: blur(10px);">
+        <h3 class="text-center mb-4 text-primary">Make a Payment</h3>
+        <p class="text-center text-muted">Secure and hassle-free transactions with Razorpay</p>
+
+        <form action="{% url 'payment' %}" method="POST">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Full Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label fw-bold">Amount (INR)</label>
+                <input type="number" name="amount" class="form-control" id="amount" placeholder="Enter amount" required>
+            </div>
+
+            <button type="submit" class="btn w-100 text-white" style="background: linear-gradient(135deg, #007bff, #6610f2);">Pay Now</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
